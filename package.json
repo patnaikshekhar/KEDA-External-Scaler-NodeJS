@@ -1,0 +1,21 @@
+{
+  "name": "keda_external_service_nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.1",
+    "google-protobuf": "^3.9.1",
+    "grpc": "^1.22.2",
+    "mongodb": "^3.3.0-beta2",
+    "nodemon": "^1.19.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

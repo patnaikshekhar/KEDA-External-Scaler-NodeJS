@@ -1,0 +1,10 @@
+apiVersion: skaffold/v1beta13
+kind: Config
+build:
+  artifacts:
+  - image: patnaikshekhar/keda-external-scaler-node
+    context: .
+    sync:
+      manual:
+      - src: './*.js'
+        dest: /app

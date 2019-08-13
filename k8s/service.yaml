@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: keda-external-scaler-nodejs
+  namespace: keda
+spec:
+  type: ClusterIP
+  selector:
+    app: keda-external-scaler-nodejs
+  ports:
+  - protocol: TCP
+    port: 50051

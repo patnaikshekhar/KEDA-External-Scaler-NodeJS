@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keda-external-scaler-nodejs
+  namespace: keda
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keda-external-scaler-nodejs
+  template:
+    metadata:
+      labels:
+        app: keda-external-scaler-nodejs
+    spec:
+      containers:
+      - name: keda-external-scaler-nodejs
+        image: patnaikshekhar/keda-external-scaler-nodejs:1
+        ports:
+        - containerPort: 50051
+          name: grpc

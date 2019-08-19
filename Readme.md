@@ -2,7 +2,8 @@
 
 This is an example of a external scaler written using Node JS.
 
-# Steps
+
+# Steps to test
 
 Deploy the scaler in the keda namespace
 
@@ -10,7 +11,7 @@ Deploy the scaler in the keda namespace
 kubectl apply -f k8s/
 ```
 
-The scaler uses mongodb and therefore we will deploy an instance of MongoDB to a new namespace
+The scaler uses MongoDB and therefore we will deploy an instance of it to a new namespace
 
 ```sh
 kubectl create ns keda-external-scaler-test
@@ -19,6 +20,7 @@ helm install stable/mongodb --name keda-mongo --namespace keda-external-scaler-t
 ```
 
 We will deploy a test application that we'll use to test the scaler
+
 ```sh
 
 export MONGODB_ROOT_PASSWORD=$(kubectl get secret \
@@ -83,4 +85,18 @@ Login into MongoDB using the credentials and insert a few records
 
 ```sh
 
+kubectl run \
+    --namespace ccp mongo-mongodb-client \
+    --rm --tty -i --restart='Never' \
+    --image bitnami/mongodb --command \
+    -- mongo admin --host mongo-mongodb --authenticationDatabase admin -u root -p $MONGODB_ROOT_PASSWORD
+
+
+> use sample
+> db.customers.insert({ name: "one" })
+> db.customers.insert({ name: "two" })
+> db.customers.insert({ name: "three" })
+> db.customers.insert({ name: "four" })
 ```
+
+You should now see the sample-consumer pod being scaled up.

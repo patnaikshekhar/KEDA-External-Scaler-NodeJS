@@ -86,10 +86,10 @@ Login into MongoDB using the credentials and insert a few records
 ```sh
 
 kubectl run \
-    --namespace ccp mongo-mongodb-client \
+    --namespace keda-external-scaler-test mongo-mongodb-client \
     --rm --tty -i --restart='Never' \
     --image bitnami/mongodb --command \
-    -- mongo admin --host mongo-mongodb --authenticationDatabase admin -u root -p $MONGODB_ROOT_PASSWORD
+    -- mongo admin --host keda-mongo-mongodb --authenticationDatabase admin -u root -p $MONGODB_ROOT_PASSWORD
 
 
 > use sample
@@ -100,3 +100,7 @@ kubectl run \
 ```
 
 You should now see the sample-consumer pod being scaled up.
+
+```sh
+watch kubectl get pods -n keda-external-scaler-test
+```

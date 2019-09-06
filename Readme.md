@@ -72,7 +72,7 @@ spec:
   - type: external
     metadata:
       # Required
-      serviceURI: keda-external-scaler-nodejs:50051
+      scalerAddress: keda-external-scaler-nodejs:50051
       # Optional
       connectionString: MONGO_CONNECTION_STRING
       db: sample

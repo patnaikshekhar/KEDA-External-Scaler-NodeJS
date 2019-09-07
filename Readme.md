@@ -5,6 +5,13 @@ This is an example of a external scaler written using Node JS.
 
 # Steps to test
 
+Clone this repository
+
+```sh
+git clone https://github.com/patnaikshekhar/KEDA-External-Scaler-NodeJS
+cd KEDA-External-Scaler-NodeJS
+```
+
 Deploy the scaler in the keda namespace
 
 ```sh
